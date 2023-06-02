@@ -25,18 +25,18 @@ export default function App() {
     <Box
       sx={{
         flexGrow: 1,
-        bgcolor: "background.paper",
+      
         display: "flex",
         height: 224,
       }}
     >
       <Tabs
         orientation="vertical"
-        variant="scrollable"
+    
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={{ borderRight: 1, borderColor: "divider", height:224 }}
       >
         <Tab label="Pot Odds" {...a11yProps(0)} />
         <Tab label="Hand Range Chart" {...a11yProps(1)} />

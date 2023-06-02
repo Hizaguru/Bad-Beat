@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Checkboxes from './Checkbox';
+import { useEffect, useState } from 'react';
 import { calculatePotOdds } from './utils';
 
 const PotOddsCalculator = () => {
@@ -22,6 +21,8 @@ const PotOddsCalculator = () => {
     }
   };
   
+  useEffect(() => {
+    handleCalculatePotOdds()},[potSize, callSize]);
 
   const handleCalculatePotOdds = () => {
     if (potSize && callSize) {
@@ -35,16 +36,25 @@ const PotOddsCalculator = () => {
 
   return (
     <form>
-      <div>
-      <Checkboxes selectedStages={selectedStages} handleStageChange={handleStageChange} />
+      <div className='flex space-x-4'>
+        <label>
+            pre-flop
+      <input
+          className='ml-2'
+          type="checkbox"
+          value={potSize}
+          onChange={(e) => handleStageChange(e)}
+        />
+        </label>
       </div>
-      <div>
+      <div className='py-2'>
       <label>
         Size of the pot:
         <input
           type="text"
           value={potSize}
           onChange={(e) => setPotSize(e.target.value)}
+          className="bg-gray-300"
         />
       </label>
       </div>
@@ -55,16 +65,17 @@ const PotOddsCalculator = () => {
           type="text"
           value={callSize}
           onChange={(e) => setCallSize(e.target.value)}
+          className="bg-gray-300"
         />
       </label>
       </div>
-      <div></div>
-      <button type="button" onClick={handleCalculatePotOdds}>
-        Calculate Pot Odds
-      </button>
-      {potOdds && (
+      {potOdds ? (
         <div>
-          Pot Odds: {potOdds}
+          Pot Odds: {parseFloat(potOdds) * 100}%
+        </div>
+      ) : (
+        <div>
+          Pot Odds: 0%
         </div>
       )}
     </form>
