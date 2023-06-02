@@ -39,7 +39,7 @@ const PotOddsCalculator = () => {
       <div className='flex space-x-4'>
         <label>
             pre-flop
-      <input
+      <input 
           className='ml-2'
           type="checkbox"
           value={potSize}
