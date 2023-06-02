@@ -5,21 +5,9 @@ const PotOddsCalculator = () => {
   const [potSize, setPotSize] = useState('');
   const [callSize, setCallSize] = useState('');
   const [potOdds, setPotOdds] = useState('');
-  const [selectedStages, setSelectedStages] = useState<string[]>([]);
 
 
-  const handleStageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const stage = e.target.value;
-    const isChecked = e.target.checked;
-  
-    if (isChecked) {
-      setSelectedStages((prevSelectedStages) => [...prevSelectedStages, stage]);
-    } else {
-      setSelectedStages((prevSelectedStages) =>
-        prevSelectedStages.filter((selectedStage) => selectedStage !== stage)
-      );
-    }
-  };
+
   
   useEffect(() => {
     handleCalculatePotOdds()},[potSize, callSize]);
@@ -36,17 +24,6 @@ const PotOddsCalculator = () => {
 
   return (
     <form>
-      <div className='flex space-x-4'>
-        <label>
-            pre-flop
-      <input 
-          className='ml-2'
-          type="checkbox"
-          value={potSize}
-          onChange={(e) => handleStageChange(e)}
-        />
-        </label>
-      </div>
       <div className='py-2'>
       <label>
         Size of the pot:
