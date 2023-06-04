@@ -5,34 +5,33 @@ const PotOddsCalculator = () => {
   const [bigBlind, setBigBlind] = useState("");
   const [potSize, setPotSize] = useState("");
   const [callSize, setCallSize] = useState("");
+  const [raiseSize, setRaiseSize] = useState("");
   const [potOdds, setPotOdds] = useState("");
 
   useEffect(() => {
     handleCalculatePotOdds();
-  }, [potSize, callSize, potOdds, bigBlind]);
+  }, [potSize, callSize, potOdds]);
 
   const handleCalculatePotOdds = () => {
     if (potSize && callSize) {
       const potSizeFloat = parseFloat(potSize);
       const callSizeFloat = parseFloat(callSize);
-      const bigBlindFloat = parseFloat(bigBlind);
 
       const potOddsValue = calculatePotOdds(potSizeFloat, callSizeFloat);
       setPotOdds(potOddsValue.toFixed(2));
-      setBigBlind(bigBlindFloat.toFixed(2));
     }
   };
 
   return (
     <form>
-      <div className="py-2">
+      <div className="py-2 flex flex-col gap-4">
         <label>
           Size of the BB:
           <input
             type="text"
             value={bigBlind}
             onChange={(e) => setBigBlind(e.target.value)}
-            className="bg-gray-300"
+            className="bg-gray-300 ml-2"
           />
         </label>
         <label>
@@ -41,7 +40,16 @@ const PotOddsCalculator = () => {
             type="text"
             value={potSize}
             onChange={(e) => setPotSize(e.target.value)}
-            className="bg-gray-300"
+            className="bg-gray-300 ml-2"
+          />
+        </label>
+        <label>
+          Size of the Raise:
+          <input
+            type="text"
+            value={raiseSize}
+            onChange={(e) => setRaiseSize(e.target.value)}
+            className="bg-gray-300 ml-2"
           />
         </label>
       </div>
@@ -52,15 +60,17 @@ const PotOddsCalculator = () => {
             type="text"
             value={callSize}
             onChange={(e) => setCallSize(e.target.value)}
-            className="bg-gray-300"
+            className="bg-gray-300 ml-2"
           />
         </label>
       </div>
       {potOdds ? (
         <div>
           <div>Pot Odds: {parseFloat(potOdds) * 100}%</div>
+          <div>Raise: {parseFloat(raiseSize)}</div>
           <div>Big blind: {parseFloat(bigBlind)}</div>
           <div>Small blind: {parseFloat(bigBlind) / 2}</div>
+          <div>Final pot size: to be implemented</div>
         </div>
       ) : (
         <div>Pot Odds: 0%</div>
