@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { calculatePotOdds } from './utils';
 
 const PotOddsCalculator = () => {

@@ -22,31 +22,31 @@ const HandRange: React.FC = () => {
   };
 
   return (
-    <div className='w-70pct max-w-full'>
-<div>
-  {checkboxes.map((checkbox) => (
-    <Checkbox
-      key={checkbox.id}
-      selectedStages={checkbox.checked}
-      handleStageChange={() => handleStageChange(checkbox.id)}
-      text={checkbox.label}
-    />
-  ))}
-</div>
-<div>
-<div>
-  {checkboxes.map((checkbox) => checkbox.checked && (
-    <img
-      key={checkbox.id}
-      className="w-full h-auto"
-      src={checkbox.imageSrc}
-      alt={checkbox.label}
-    />
-  ))}
-</div>
-</div>
+  <div className='w-70pct max-w-full'>
+  <div>
+    {checkboxes.map((checkbox) => (
+      <Checkbox
+        key={checkbox.id}
+        selectedStages={checkbox.checked}
+        handleStageChange={() => handleStageChange(checkbox.id)}
+        text={checkbox.label}
+      />
+    ))}
+  </div>
+  <div>
+    <div>
+      {checkboxes.map((checkbox) => checkbox.checked && (
+        <img
+          key={checkbox.id}
+          className="w-full h-auto"
+          src={checkbox.imageSrc}
+          alt={checkbox.label}
+        />
+      ))}
     </div>
-  );
+  </div>
+</div>
+);
 };
 
 export default HandRange;
