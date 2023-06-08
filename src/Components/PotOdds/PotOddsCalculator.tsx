@@ -5,12 +5,13 @@ const PotOddsCalculator = () => {
   const [potSize, setPotSize] = useState('');
   const [callSize, setCallSize] = useState('');
   const [potOdds, setPotOdds] = useState('');
-
-
+  const [winOdds, setWinOdds] = useState('')
+  const [multiplyByFour, setMultiplyByFour] = useState(false);
+  const [multiplyByTwoPointTwo, setMultiplyByTwoPointTwo] = useState(false);
 
   
   useEffect(() => {
-    handleCalculatePotOdds()},[potSize, callSize]);
+    handleCalculatePotOdds()},[potSize, callSize, potOdds]);
 
   const handleCalculatePotOdds = () => {
     if (potSize && callSize) {
@@ -20,6 +21,29 @@ const PotOddsCalculator = () => {
       const potOddsValue = calculatePotOdds(potSizeFloat, callSizeFloat);
       setPotOdds(potOddsValue.toFixed(2));
     }
+  };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setWinOdds(event.target.value);
+  };
+  
+  const handleCheckboxOneChange = () => {
+    setMultiplyByFour(!multiplyByFour);
+  };
+
+  const handleCheckboxTwoChange = () => {
+    setMultiplyByTwoPointTwo(!multiplyByTwoPointTwo);
+  };
+
+  const calculateResult = () => {
+    let result = parseFloat(winOdds);
+    if (multiplyByFour) {
+      result *= 4;
+    }
+    if (multiplyByTwoPointTwo) {
+      result *= 2.2;
+    }
+    return result;
   };
 
   return (
@@ -46,7 +70,7 @@ const PotOddsCalculator = () => {
         />
       </label>
       </div>
-      {potOdds ? (
+      {potOdds  ? (
         <div>
           Pot Odds: {parseFloat(potOdds) * 100}%
         </div>
@@ -55,6 +79,31 @@ const PotOddsCalculator = () => {
           Pot Odds: 0%
         </div>
       )}
+        <div>
+      <input type="text" value={winOdds} onChange={handleChange} />
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={multiplyByFour}
+            onChange={handleCheckboxOneChange}
+          />
+         Flop
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={multiplyByTwoPointTwo}
+            onChange={handleCheckboxTwoChange}
+          />
+          River
+        </label>
+      </div>
+      <div>Result: {calculateResult()}</div>
+       <input type="text" value={winOdds} onChange={handleChange} />
+    </div>
     </form>
   );
 };

@@ -1,31 +1,50 @@
 import React, { useState } from 'react';
 import Checkbox from '../PotOdds/Checkbox';
-import pokerHandRangeFor6 from './images/PokerHandChart-6.png';
-import pokerHandRangeFor8 from './images/PokerHandChart-8.png';
+import utg from './images/UTG.png';
+import utg1 from './images/UTG1.png';
+import utg2 from './images/UTG2.png';
 
 
 const HandRange: React.FC = () => {
-  const [isChecked1, setIsChecked1] = useState(true);
-  const [isChecked2, setIsChecked2] = useState(false);
-
-  const handleChange1 = () => {
-    setIsChecked1(true);
-    setIsChecked2(false);
-  };
-
-  const handleChange2 = () => {
-    setIsChecked1(false);
-    setIsChecked2(true);
+  const [checkboxes, setCheckboxes] = useState([
+    { id: 1, label: 'UTG', checked: true, imageSrc: utg },
+    { id: 2, label: 'UTG+1', checked: false, imageSrc: utg1 },
+    { id: 3, label: 'UTG+2', checked: false, imageSrc: utg2 },
+  ]);
+  
+  const handleStageChange = (checkboxId:number) => {
+    const updatedCheckboxes = checkboxes.map((checkbox) => ({
+      ...checkbox,
+      checked: checkbox.id === checkboxId,
+    }));
+  
+    setCheckboxes(updatedCheckboxes);
   };
 
   return (
     <div className='w-70pct max-w-full'>
-      <Checkbox selectedStages={isChecked1} handleStageChange={handleChange1} text='Poker Hand for 8 players'/>
-        <Checkbox selectedStages={isChecked2} handleStageChange={handleChange2} text='Poker Hand for 6 players'/>
-      <div >
-        {isChecked1 && <img className='w-full h-auto' src={pokerHandRangeFor8} alt="Poker hand chart for 8 players" />}
-        {isChecked2 && <img className='w-full h-auto' src={pokerHandRangeFor6} alt="Poker hand chart for 6 players" />}
-      </div>
+<div>
+  {checkboxes.map((checkbox) => (
+    <Checkbox
+      key={checkbox.id}
+      selectedStages={checkbox.checked}
+      handleStageChange={() => handleStageChange(checkbox.id)}
+      text={checkbox.label}
+    />
+  ))}
+</div>
+<div>
+<div>
+  {checkboxes.map((checkbox) => checkbox.checked && (
+    <img
+      key={checkbox.id}
+      className="w-full h-auto"
+      src={checkbox.imageSrc}
+      alt={checkbox.label}
+    />
+  ))}
+</div>
+</div>
     </div>
   );
 };
