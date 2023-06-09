@@ -1,18 +1,19 @@
-
-import React, { useEffect, useState } from 'react';
-import { calculatePotOdds } from './utils';
+import React, { useEffect, useState } from "react";
+import { calculatePotOdds } from "./utils";
 
 const PotOddsCalculator = () => {
-  const [potSize, setPotSize] = useState('');
-  const [callSize, setCallSize] = useState('');
-  const [potOdds, setPotOdds] = useState('');
-  const [winOdds, setWinOdds] = useState('')
+  const [potSize, setPotSize] = useState("");
+  const [callSize, setCallSize] = useState("");
+  const [potOdds, setPotOdds] = useState("");
+  const [winOdds, setWinOdds] = useState("");
+  const [raiseSize, setRaiseSize] = useState("");
+  const [bigBlind, setBigBlind] = useState("");
   const [multiplyByFour, setMultiplyByFour] = useState(false);
   const [multiplyByTwoPointTwo, setMultiplyByTwoPointTwo] = useState(false);
 
-  
   useEffect(() => {
-    handleCalculatePotOdds()},[potSize, callSize, potOdds]);
+    handleCalculatePotOdds();
+  }, [potSize, callSize, potOdds]);
 
   const handleCalculatePotOdds = () => {
     if (potSize && callSize) {
@@ -24,10 +25,10 @@ const PotOddsCalculator = () => {
     }
   };
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setWinOdds(event.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setWinOdds(event.target.value);
   };
-  
+
   const handleCheckboxOneChange = () => {
     setMultiplyByFour(!multiplyByFour);
   };
@@ -89,7 +90,7 @@ const PotOddsCalculator = () => {
           />
         </label>
       </div>
-      {potOdds  ? (
+      {potOdds ? (
         <div>
           <div>Pot Odds: {parseFloat(potOdds) * 100}%</div>
           <div>Raise: {parseFloat(raiseSize)}</div>
@@ -100,31 +101,31 @@ const PotOddsCalculator = () => {
       ) : (
         <div>Pot Odds: 0%</div>
       )}
+      <div>
+        <input type="text" value={winOdds} onChange={handleChange} />
         <div>
-      <input type="text" value={winOdds} onChange={handleChange} />
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={multiplyByFour}
-            onChange={handleCheckboxOneChange}
-          />
-         Flop
-        </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={multiplyByFour}
+              onChange={handleCheckboxOneChange}
+            />
+            Flop
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={multiplyByTwoPointTwo}
+              onChange={handleCheckboxTwoChange}
+            />
+            River
+          </label>
+        </div>
+        <div>Result: {calculateResult()}</div>
+        <input type="text" value={winOdds} onChange={handleChange} />
       </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={multiplyByTwoPointTwo}
-            onChange={handleCheckboxTwoChange}
-          />
-          River
-        </label>
-      </div>
-      <div>Result: {calculateResult()}</div>
-       <input type="text" value={winOdds} onChange={handleChange} />
-    </div>
     </form>
   );
 };
