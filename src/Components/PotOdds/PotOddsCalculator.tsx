@@ -48,8 +48,8 @@ const PotOddsCalculator = () => {
       </div>
       {potOdds ? (
         <div className="py-8">
-          <div>Pot Odds: {parseFloat(potOdds) * 100}%</div>
-          <div>Pot Odds: {(100 / (parseFloat(potOdds) * 100))-1} to 1</div>
+          <div>Pot Odds: {(parseFloat(potOdds) * 100).toFixed(1)}%</div>
+          <div>Pot Odds: {((100 / (parseFloat(potOdds) * 100))-1).toFixed(1)} to 1</div>
         </div>
       ) : (
         <div>Pot Odds: 0%</div>

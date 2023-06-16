@@ -33,7 +33,7 @@ const Outs = () => {
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-        Show out tables
+        Show the outs tables
       </label>
 
       {isChecked && (
