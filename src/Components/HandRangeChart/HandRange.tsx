@@ -33,7 +33,7 @@ const HandRange: React.FC = () => {
 
   return (
     <div className="w-70pct max-w-full">
-    <div className="grid grid-cols-4 gap-4 flex items-center">
+    <div className="grid-cols-4 gap-4 flex items-center">
     {checkboxes.map((checkbox) => (
       <Checkbox
         key={checkbox.id}

@@ -5,11 +5,6 @@ const PotOddsCalculator = () => {
   const [potSize, setPotSize] = useState("");
   const [callSize, setCallSize] = useState("");
   const [potOdds, setPotOdds] = useState("");
-  const [winOdds, setWinOdds] = useState("");
-  const [raiseSize, setRaiseSize] = useState("");
-  const [bigBlind, setBigBlind] = useState("");
-  const [multiplyByFour, setMultiplyByFour] = useState(false);
-  const [multiplyByTwoPointTwo, setMultiplyByTwoPointTwo] = useState(false);
 
   useEffect(() => {
     handleCalculatePotOdds();
@@ -25,56 +20,15 @@ const PotOddsCalculator = () => {
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWinOdds(event.target.value);
-  };
-
-  const handleCheckboxOneChange = () => {
-    setMultiplyByFour(!multiplyByFour);
-  };
-
-  const handleCheckboxTwoChange = () => {
-    setMultiplyByTwoPointTwo(!multiplyByTwoPointTwo);
-  };
-
-  const calculateResult = () => {
-    let result = parseFloat(winOdds);
-    if (multiplyByFour) {
-      result *= 4;
-    }
-    if (multiplyByTwoPointTwo) {
-      result *= 2.2;
-    }
-    return result;
-  };
-
   return (
     <form>
       <div className="py-2 flex flex-col gap-4">
-        <label>
-          Size of the BB:
-          <input
-            type="text"
-            value={bigBlind}
-            onChange={(e) => setBigBlind(e.target.value)}
-            className="bg-gray-300 ml-2"
-          />
-        </label>
         <label>
           Size of the pot:
           <input
             type="text"
             value={potSize}
             onChange={(e) => setPotSize(e.target.value)}
-            className="bg-gray-300 ml-2"
-          />
-        </label>
-        <label>
-          Size of the Raise:
-          <input
-            type="text"
-            value={raiseSize}
-            onChange={(e) => setRaiseSize(e.target.value)}
             className="bg-gray-300 ml-2"
           />
         </label>
@@ -91,41 +45,14 @@ const PotOddsCalculator = () => {
         </label>
       </div>
       {potOdds ? (
-        <div>
+        <div className="py-8">
           <div>Pot Odds: {parseFloat(potOdds) * 100}%</div>
-          <div>Raise: {parseFloat(raiseSize)}</div>
-          <div>Big blind: {parseFloat(bigBlind)}</div>
-          <div>Small blind: {parseFloat(bigBlind) / 2}</div>
-          <div>Final pot size: to be implemented</div>
+          <div>Pot Odds: {(100 / (parseFloat(potOdds) * 100))-1} to 1</div>
         </div>
       ) : (
         <div>Pot Odds: 0%</div>
       )}
-      <div>
-        <input type="text" value={winOdds} onChange={handleChange} />
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={multiplyByFour}
-              onChange={handleCheckboxOneChange}
-            />
-            Flop
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={multiplyByTwoPointTwo}
-              onChange={handleCheckboxTwoChange}
-            />
-            River
-          </label>
-        </div>
-        <div>Result: {calculateResult()}</div>
-        <input type="text" value={winOdds} onChange={handleChange} />
-      </div>
+     
     </form>
   );
 };

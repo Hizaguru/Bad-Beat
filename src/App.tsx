@@ -3,15 +3,28 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import * as React from "react";
 import HandRange from "./Components/HandRangeChart/HandRange";
+import HandRangeSixToEight from "./Components/HandRangeChart/HandRangeSixToEight";
 import PotOddsCalculator from "./Components/PotOdds/PotOddsCalculator";
 import TabPanel from "./Components/TabPanel";
+import {a11yProps} from './utils'
 
-function a11yProps(index: number) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
+
+
+const tabs = [
+  {
+    label: "Pot Odds",
+    component: <PotOddsCalculator />,
+  },
+  {
+    label: "Hand Range Chart",
+    component: <HandRange />,
+  },
+  {
+    label: "Hand Range Chart from six to eight",
+    component: <HandRangeSixToEight />,
+  },
+];
+
 
 export default function App() {
   const [value, setValue] = React.useState(0);
@@ -19,7 +32,6 @@ export default function App() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
   return (
     <Box
       sx={{
@@ -35,15 +47,19 @@ export default function App() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider", height: 224 }}
       >
-        <Tab label="Pot Odds" {...a11yProps(0)} />
-        <Tab label="Hand Range Chart" {...a11yProps(1)} />
+        {tabs.map((tab, index) => (
+          <Tab
+            key={index}
+            label={tab.label}
+            {...a11yProps(index)}
+          />
+        ))}
       </Tabs>
-      <TabPanel value={value} index={0}>
-        <PotOddsCalculator />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <HandRange />
-      </TabPanel>
+      {tabs.map((tab, index) => (
+        <TabPanel key={index} value={value} index={index}>
+          {tab.component}
+        </TabPanel>
+      ))}
     </Box>
   );
 }
