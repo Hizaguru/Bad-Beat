@@ -6,11 +6,7 @@ const PotOddsCalculator = () => {
   const [potSize, setPotSize] = useState("");
   const [callSize, setCallSize] = useState("");
   const [potOdds, setPotOdds] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
 
   useEffect(() => {
     handleCalculatePotOdds();

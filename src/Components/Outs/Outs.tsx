@@ -21,7 +21,6 @@ const Outs = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-
   return (
     <div className="py-12">
       <label>
