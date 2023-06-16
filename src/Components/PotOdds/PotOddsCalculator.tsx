@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import Outs from "../Outs/Outs";
 import { calculatePotOdds } from "./utils";
 
 const PotOddsCalculator = () => {
   const [potSize, setPotSize] = useState("");
   const [callSize, setCallSize] = useState("");
   const [potOdds, setPotOdds] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   useEffect(() => {
     handleCalculatePotOdds();
@@ -52,8 +58,24 @@ const PotOddsCalculator = () => {
       ) : (
         <div>Pot Odds: 0%</div>
       )}
-     
+      <div className="py-12">
+        <label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          Show out tables
+        </label>
+
+        {isChecked && (
+          <div>
+            <Outs />
+          </div>
+        )}
+    </div>
     </form>
+
   );
 };
 
