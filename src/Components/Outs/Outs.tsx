@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import drawingHand from './images/drawing-hands-outs.gif';
 import outsToImproveHand from './images/outs-to-improve-hand.gif';
+import oddsAndOuts from './images/odds-and-outs-chart.gif';
 
 const InitOuts = () => {
   return (
@@ -10,6 +11,9 @@ const InitOuts = () => {
       </div>
       <div className="p-4 border-2 border-black">
         <img src={drawingHand} className="max-w-full h-auto" alt="Drawing Hands" />
+      </div>
+      <div className="p-4 border-2 border-black">
+        <img src={oddsAndOuts} className="max-w-full h-auto" alt="Drawing Hands" />
       </div>
     </div>
   );
@@ -33,7 +37,7 @@ const Outs = () => {
       </label>
 
       {isChecked && (
-        <div>
+        <div className='py-12'>
           <InitOuts />
         </div>
       )}
