@@ -58,22 +58,9 @@ const PotOddsCalculator = () => {
       ) : (
         <div>Pot Odds: 0%</div>
       )}
-      <div className="py-12">
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-          />
-          Show out tables
-        </label>
-
-        {isChecked && (
-          <div>
-            <Outs />
-          </div>
-        )}
-    </div>
+        <div>
+          <Outs/>
+        </div>
     </form>
 
   );
