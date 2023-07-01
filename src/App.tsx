@@ -4,7 +4,6 @@ import Tabs from "@mui/material/Tabs";
 import * as React from "react";
 import HandRange from "./Components/HandRangeChart/HandRange";
 import HandRangeSixToEight from "./Components/HandRangeChart/HandRangeSixToEight";
-import Outs from "./Components/Outs/Outs";
 import PotOddsCalculator from "./Components/PotOdds/PotOddsCalculator";
 import TabPanel from "./Components/TabPanel";
 import {a11yProps} from './utils'
@@ -23,10 +22,6 @@ const tabs = [
   {
     label: "Hand Range Chart from six to eight",
     component: <HandRangeSixToEight />,
-  },
-  {
-    label: "Outs",
-    component: <Outs />,
   },
 ];
 
@@ -54,14 +49,14 @@ export default function App() {
       >
         {tabs.map((tab, index) => (
           <Tab
-            key={index}
+            key={tab.label}
             label={tab.label}
             {...a11yProps(index)}
           />
         ))}
       </Tabs>
       {tabs.map((tab, index) => (
-        <TabPanel key={index} value={value} index={index}>
+        <TabPanel key={tab.label} value={value} index={index}>
           {tab.component}
         </TabPanel>
       ))}
