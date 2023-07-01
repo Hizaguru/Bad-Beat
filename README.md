@@ -9,7 +9,7 @@ To install and run the holdem-tool project, follow these steps:
 1. Clone the repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/Hizaguru/holdem-tool.git
+   git clone https://github.com/Hizaguru/Bad-Beat.git
    ```
 
 2. Navigate to the project directory:
