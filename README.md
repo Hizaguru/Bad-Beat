@@ -1,47 +1,62 @@
-# Getting Started with Create React App
+holdem-tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+holdem-tool is a React typescript project that provides various tools for Texas Hold'em poker players. It includes functionalities to calculate pot odds, display hand range images, and provide out charts. Whether you're a beginner or an experienced player, holdem-tool can assist you in making informed decisions during your poker sessions.
+Installation
 
-## Available Scripts
+To install and run the holdem-tool project, follow these steps:
 
-In the project directory, you can run:
+    Clone the repository to your local machine using the following command:
 
-### `npm start`
+    bash
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+git clone https://github.com/Hizaguru/holdem-tool.git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Navigate to the project directory:
 
-### `npm test`
+bash
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cd holdem-tool
 
-### `npm run build`
+Install the project dependencies using either Yarn or npm:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+shell
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    # Using npm
+    npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Usage
 
-### `npm run eject`
+Once you have installed the dependencies, you can run the holdem-tool project by executing the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+shell
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Using npm
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This command will start the development server and open the application in your default browser. If the browser doesn't open automatically, you can access the application by navigating to http://localhost:3000 in your browser.
+Project Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The project structure of holdem-tool is organized as follows:
 
-## Learn More
+java
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+holdem-tool/
+  ├── public/
+  │   └── index.html
+  ├── src/
+  │   ├── Components/
+  │   │   ├── images
+  │   │   ├── images2  
+  │   │   ├── HandRange.tsx
+  │   │   ├── HandRangeSixToEight.tsx
+  │   ├── App.tsx
+  │   └── ...
+  ├── .gitignore
+  ├── package.json
+  ├── postcss.config.js
+  └── README.md
+  ├── tailwind.config.js
+  └── README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# holdem-tool
+
+Feel free to explore and modify the project code according to your needs.
