@@ -1,6 +1,6 @@
-# holdem-tool
+# Bad-Beat
 
-holdem-tool is a React TypeScript project that provides various tools for Texas Hold'em poker players. It includes functionalities to calculate pot odds, display hand range images, and provide out charts. Whether you're a beginner or an experienced player, holdem-tool can assist you in making informed decisions during your poker sessions.
+Bad-Beat is a React TypeScript project that provides various tools for Texas Hold'em poker players. It includes functionalities to calculate pot odds, display hand range images, and provide out charts. Whether you're a beginner or an experienced player, holdem-tool can assist you in making informed decisions during your poker sessions.
 
 ## Installation
 
