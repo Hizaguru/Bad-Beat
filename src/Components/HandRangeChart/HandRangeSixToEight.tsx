@@ -40,8 +40,8 @@ const HandRangeSixToEight: React.FC = () => {
 
 
       <div>
-        {isChecked1 && <img src={pokerHandRangeFor8} alt="Poker hand chart for 8 players" />}
-        {isChecked2 && <img src={pokerHandRangeFor6} alt="Poker hand chart for 6 players" />}
+        {isChecked1 && <img src={pokerHandRangeFor8} alt="Poker hand chart for 8 players" style={{width:"500px", height:"500px"}} />}
+        {isChecked2 && <img src={pokerHandRangeFor6} alt="Poker hand chart for 6 players" style={{width:"500px", height:"500px"}} />}
       </div>
     </div>
   );

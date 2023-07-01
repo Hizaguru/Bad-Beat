@@ -51,6 +51,8 @@ const HandRange: React.FC = () => {
           className="w-full h-auto py-12"
           src={checkbox.imageSrc}
           alt={checkbox.label}
+          width='500px'
+          height='500px'
         />
       ))}
     </div>
