@@ -38,25 +38,24 @@ Project Structure
 
 The project structure of holdem-tool is organized as follows:
 
-java
-
 holdem-tool/
   ├── public/
   │   └── index.html
   ├── src/
   │   ├── Components/
-  │   │   ├── images
-  │   │   ├── images2  
+  │   │   ├── images/
+  │   │   ├── images2/
   │   │   ├── HandRange.tsx
   │   │   ├── HandRangeSixToEight.tsx
+  │   │   └── ...
   │   ├── App.tsx
   │   └── ...
   ├── .gitignore
   ├── package.json
   ├── postcss.config.js
-  └── README.md
   ├── tailwind.config.js
   └── README.md
+
 
 
 Feel free to explore and modify the project code according to your needs.
