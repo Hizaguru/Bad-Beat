@@ -50,9 +50,9 @@ holdem-tool/
 │   │   ├── images2/
 │   │   ├── HandRange.tsx
 │   │   ├── HandRangeSixToEight.tsx
-│   │   └── ...
+│   │   
 │   ├── App.tsx
-│   └── ...
+│   
 ├── .gitignore
 ├── package.json
 ├── postcss.config.js
